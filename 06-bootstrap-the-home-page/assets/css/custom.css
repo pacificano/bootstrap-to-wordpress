@@ -59,6 +59,37 @@ img {
 	max-width: 100%;
 }
 
+.modal-content {
+	background: url('../img/paisley.png');
+}
+
+.badge.social {
+	background: #ccc;
+	font-size: 24px;
+	height: 40px;
+	width: 40px;
+	text-align: center;
+	line-height: 42px;
+	margin: 0 5px 20px 0;
+	padding: 0;
+	-webkit-border-radius: 50px;
+	-moz-border-radius: 50px;
+	border-radius: 50px;
+	color: white;
+}
+
+.badge.social.twitter:hover {
+	background: #55acee;
+}
+
+.badge.social.facebook:hover {
+	background: #3b5998;
+}
+
+.badge.social.gplus:hover {
+	background: #db4b39;
+}
+
 
 
 /* Hero */
@@ -131,6 +162,22 @@ img {
 
 
 /* Layout */
+section {
+	padding: 80px 0;
+}
+
+.section-header {
+	text-align: center;
+}
+
+section h2 {
+	margin: 20px 0 40px;
+}
+
+section h3 {
+	margin: 30px 0 10px;
+}
+
 #optin {
 	background: #3e4249;
 	padding: 20px 0;
@@ -143,3 +190,64 @@ img {
 #optin p {
 	margin: 7px 0 0 0;
 }
+
+#who-benefits {
+	background: white;
+}
+
+#course-features {
+	background: #3e4249;
+	color: white;
+	text-align: center;
+}
+
+#project-features {
+	text-align: center;
+}
+
+#featurette {
+	background: url('../img/hero-bg02.jpg') 50% 100% repeat fixed;
+	background-size: cover;
+	text-align: center;
+	color: white;
+}
+
+#instructor {
+	background: white url('../img/photo-2.jpg') 100% 50% no-repeat;
+}
+
+#instructor h2 {
+	margin: 0 0 18px;
+}
+
+#instructor .num {
+	font-size: 30px;
+	font-weight: bold;
+	color: white;
+	height: 140px;
+	width: 140px;
+	text-align: center;
+	background: #dd5638;
+	-webkit-border-radius: 100%;
+	-moz-border-radius: 100%;
+	border-radius: 100%;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizelegibility;
+}
+
+
+
+/* custom icon sprites*/
+i.ci {
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background: url('../img/icon-sprite.png') no-repeat;
+}
+
+.ci.ci-computer 	{	background-position: 0 0;	}
+.ci.ci-watch 		{	background-position: -40px 0;	}
+.ci.ci-calendar 	{	background-position: -80px 0;	}
+.ci.ci-community	{	background-position: -120px 0;	}
+.ci.ci-instructor	{	background-position: -160px 0;	}
+.ci.ci-device 		{	background-position: -200px 0;	}
