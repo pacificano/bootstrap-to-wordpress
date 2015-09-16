@@ -21,6 +21,14 @@
 	$reason_2_title = get_field('reason_2_title');
 	$reason_2_description = get_field('reason_2_description');
 
+	$who_feature_image = get_field('who_feature_image');
+	$who_section_title = get_field('who_section_title');
+	$who_section_body = get_field('who_section_body');
+
+	$features_section_image = get_field('features_section_image');
+	$features_section_title = get_field('features_section_title');
+	$features_section_body = get_field('features_section_body');
+
 get_header(); ?>
 
 	<!-- hero -->
@@ -124,20 +132,18 @@ get_header(); ?>
 		<div class="container">
 
 			<div class="section-header">
-				<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-cat2.png" alt="scared cat">
-				<h2>Who Likes Cats? Like, Really Likes Cats?</h2>
+				
+				<!-- if user uploaded an image -->
+				<?php if( !empty($who_feature_image) ) : ?>
+					<img src="<?php echo $who_feature_image['url']; ?>" alt="<?php echo $who_feature_image['alt']; ?>">
+				<?php endif; ?>
+
+				<h2><?php echo $who_section_title; ?></h2>
 			</div>
 			
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">
-					<h3>Lorem Ipsum Dolor Sit Amet</h3>
-					<p>Fusce tincidunt nunc nulla, ut faucibus eros fermentum sit amet. Donec dictum tincidunt dui, id egestas nisl condimentum non. Nam in velit sodales, laoreet elit sed, mattis nisi. Aenean sagittis enim id sagittis hendrerit. Aliquam posuere ac nisi ac sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh diam, sodales in sodales in, laoreet ac est. Integer hendrerit dignissim dui, non gravida ex aliquet quis. Mauris vel enim eget neque semper eleifend non eu lorem. In at suscipit urna, eget maximus ex. Integer rutrum bibendum est ac lacinia.</p>
-					<h3>Lorem Ipsum Dolor Sit Amet</h3>
-					<p>Fusce tincidunt nunc nulla, ut faucibus eros fermentum sit amet. Donec dictum tincidunt dui, id egestas nisl condimentum non. Nam in velit sodales, laoreet elit sed, mattis nisi. Aenean sagittis enim id sagittis hendrerit. Aliquam posuere ac nisi ac sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh diam, sodales in sodales in, laoreet ac est. Integer hendrerit dignissim dui, non gravida ex aliquet quis. Mauris vel enim eget neque semper eleifend non eu lorem. In at suscipit urna, eget maximus ex. Integer rutrum bibendum est ac lacinia.</p>
-					<h3>Lorem Ipsum Dolor Sit Amet</h3>
-					<p>Fusce tincidunt nunc nulla, ut faucibus eros fermentum sit amet. Donec dictum tincidunt dui, id egestas nisl condimentum non. Nam in velit sodales, laoreet elit sed, mattis nisi. Aenean sagittis enim id sagittis hendrerit. Aliquam posuere ac nisi ac sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh diam, sodales in sodales in, laoreet ac est. Integer hendrerit dignissim dui, non gravida ex aliquet quis. Mauris vel enim eget neque semper eleifend non eu lorem. In at suscipit urna, eget maximus ex. Integer rutrum bibendum est ac lacinia.</p>
-					<h3>Lorem Ipsum Dolor Sit Amet</h3>
-					<p>Fusce tincidunt nunc nulla, ut faucibus eros fermentum sit amet. Donec dictum tincidunt dui, id egestas nisl condimentum non. Nam in velit sodales, laoreet elit sed, mattis nisi. Aenean sagittis enim id sagittis hendrerit. Aliquam posuere ac nisi ac sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh diam, sodales in sodales in, laoreet ac est. Integer hendrerit dignissim dui, non gravida ex aliquet quis. Mauris vel enim eget neque semper eleifend non eu lorem. In at suscipit urna, eget maximus ex. Integer rutrum bibendum est ac lacinia.</p>
+					<?php echo $who_section_body; ?>
 				</div>
 			</div>
 		</div>
@@ -150,35 +156,33 @@ get_header(); ?>
 		<div class="container">
 			
 			<div class="section-header">
-				<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-cat3.png" alt="meowing cat">
-				<h2>Cat features</h2>
+				<!-- if user uploaded an image -->
+				<?php if( !empty($features_section_image) ) : ?>
+					<img src="<?php echo $features_section_image['url']; ?>" alt="<?php echo $features_section_image['alt']; ?>">
+				<?php endif; ?>
+
+				<h2><?php echo $features_section_title; ?></h2>
+
+				<!-- if user uploaded an image -->
+				<?php if( !empty($features_section_body) ) : ?>
+					<p class="lead"><?php echo $features_section_body; ?></p>
+				<?php endif; ?>
+
 			</div>
 
 			<div class="row">
-				<div class="col-sm-2">
-					<i class="ci ci-computer"></i>
-					<h4>They are super super furry</h4>
-				</div>
-				<div class="col-sm-2">
-					<i class="ci ci-watch"></i>
-					<h4>They like eating cat food</h4>
-				</div>
-				<div class="col-sm-2">
-					<i class="ci ci-calendar"></i>
-					<h4>They are very good for cuddling</h4>
-				</div>
-				<div class="col-sm-2">
-					<i class="ci ci-community"></i>
-					<h4>They like chasing feathers</h4>
-				</div>
-				<div class="col-sm-2">
-					<i class="ci ci-instructor"></i>
-					<h4>They can run very fast</h4>
-				</div>
-				<div class="col-sm-2">
-					<i class="ci ci-device"></i>
-					<h4>They are small little buddies</h4>
-				</div>
+
+				<?php $loop = new WP_Query( array( 'post_type' => 'course_feature', 'orderby' => 'post_id', 'order' => 'ASC' ) ); ?>
+
+				<?php while( $loop->have_posts() ) : $loop->the_post(); ?>
+					
+					<div class="col-sm-2">
+						<i class="<?php the_field('course_feature_icon'); ?>"></i>
+						<h4><?php the_title(); ?></h4>
+					</div>
+
+				<?php endwhile; ?>
+
 			</div>
 
 		</div>
