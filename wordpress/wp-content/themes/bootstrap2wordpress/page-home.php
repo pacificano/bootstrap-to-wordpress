@@ -29,6 +29,22 @@
 	$features_section_title = get_field('features_section_title');
 	$features_section_body = get_field('features_section_body');
 
+	$project_feature_title = get_field('project_feature_title');
+	$project_feature_body = get_field('project_feature_body');
+
+	$video_name = get_field('video_name');
+
+	$instructor_section_title = get_field('instructor_section_title');
+	$instructor_name = get_field('instructor_name');
+	$bio_excerpt = get_field('bio_excerpt');
+	$full_bio = get_field('full_bio');
+	$twitter_username = get_field('twitter_username');
+	$facebook_username = get_field('facebook_username');
+	$google_plus_username = get_field('google_plus_username');
+	$num_students = get_field('num_students');
+	$num_reviews = get_field('num_reviews');
+	$num_courses = get_field('num_courses');
+
 get_header(); ?>
 
 	<!-- hero -->
@@ -194,25 +210,28 @@ get_header(); ?>
 	<section id="project-features">
 		<div class="container">
 			
-			<h2>Final Cat Features</h2>
-			<p class="lead">Fusce tincidunt nunc nulla, ut faucibus eros fermentum sit amet. Donec dictum tincidunt dui, id egestas nisl condimentum non. Nam in velit sodales, laoreet elit sed, mattis nisi. Aenean sagittis enim id sagittis hendrerit. Aliquam posuere ac nisi ac sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh diam, sodales in sodales in, laoreet ac est. Integer hendrerit dignissim dui, non gravida ex aliquet quis. Mauris vel enim eget neque semper eleifend non eu lorem. In at suscipit urna, eget maximus ex. Integer rutrum bibendum est ac lacinia.</p>
+			<h2><?php echo $project_feature_title; ?></h2>
+			<p class="lead"><?php echo $project_feature_body; ?></p>
 
 			<div class="row">
-				<div class="col-sm-4">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-cat4.png" alt="cat sneakers">
-					<h3>Cats Loves To Wear Slippers &amp; Little Top Hats</h3>
-					<p>Sometimes they will smoke a pipe and talk about politics and history.</p>
-				</div>
-				<div class="col-sm-4">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-cat5.png" alt="cat bowl">
-					<h3>Cats Loves His Little Bowl</h3>
-					<p>This cat here is wondering where his food is because he is super hungry.</p>
-				</div>
-				<div class="col-sm-4">
-					<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/icon-cat6.png" alt="cat beaten up">
-					<h3>Cats Loves To Bang, Bro. Just Let Him Bang</h3>
-					<p>This cat is an ultimate fighter and is coming off a split decision loss.</p>
-				</div>
+
+				<?php $loop = new WP_Query( array( 'post_type' => 'project_feature', 'orderby' => 'post_id', 'order' => 'ASC' ) ); ?>
+
+					<?php while( $loop->have_posts() ) : $loop->the_post(); ?>
+						
+						<div class="col-sm-4">
+							<?php 
+								if ( has_post_thumbnail()) {
+								 	the_post_thumbnail();
+								 } 
+							?>
+
+							<h3><?php the_title(); ?></h3>
+							<p><?php the_content(); ?></p>
+						</div>
+
+					<?php endwhile; ?>
+
 			</div>
 		</div>
 		
@@ -225,7 +244,7 @@ get_header(); ?>
 			<div class="row">
 				<div class="col-sm-8 col-sm-offset-2">
 					<h2>Watch this silly little cat</h2>
-					<iframe width="100%" height="415" src="https://www.youtube.com/embed/uFWQZzMe5kk?rel=0" frameborder="0" allowfullscreen></iframe>
+					<iframe width="100%" height="415" src="https://www.youtube.com/embed/<?php echo $video_name; ?>?rel=0" frameborder="0" allowfullscreen></iframe>
 				</div>
 			</div>
 		</div>
@@ -240,20 +259,28 @@ get_header(); ?>
 				<div class="col-sm-8 col-md-6">
 					<div class="row">
 						<div class="col-lg-8">
-							<h2>Your Cat Wrangler <small>Billy Trejo</small></h2>
+							<h2><?php echo $instructor_section_title; ?> <small><?php echo $instructor_name; ?></small></h2>
 						</div>
 						<div class="col-lg-4">
-							<a href="http://www.twitter.com/pacificano" target="_blank" class="badge social twitter"><i class="fa fa-twitter"></i></a>
-							<a href="http://www.facebook.com/pacificano" target="_blank" class="badge social facebook"><i class="fa fa-facebook"></i></a>
-							<a href="http://www.google.com/pacificano" target="_blank" class="badge social gplus"><i class="fa fa-google-plus"></i></a>
+
+							<?php if (!empty($twitter_username)) : ?>
+								<a href="http://www.twitter.com/<?php echo $twitter_username; ?>" target="_blank" class="badge social twitter"><i class="fa fa-twitter"></i></a>
+							<?php endif; ?>
+
+							<?php if (!empty($facebook_username)) : ?>
+								<a href="http://www.facebook.com/<?php echo $facebook_username; ?>" target="_blank" class="badge social facebook"><i class="fa fa-facebook"></i></a>
+							<?php endif; ?>
+
+							<?php if (!empty($google_plus_username)) : ?>
+								<a href="http://www.google.com/<?php echo $google_plus_username ?>" target="_blank" class="badge social gplus"><i class="fa fa-google-plus"></i></a>
+							<?php endif; ?>
+
 						</div>
 					</div>
 
-					<p class="lead">Fusce tincidunt nunc nulla, ut faucibus eros fermentum sit amet. Donec dictum tincidunt dui, id egestas nisl condimentum non. Nam in velit sodales, laoreet elit sed, mattis nisi.</p> 
+					<p class="lead"><?php echo $bio_excerpt; ?></p> 
 
-					<p>Aenean sagittis enim id sagittis hendrerit. Aliquam posuere ac nisi ac sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh diam, sodales in sodales in, laoreet ac est. Integer hendrerit dignissim dui, non gravida ex aliquet quis. Mauris vel enim eget neque semper eleifend non eu lorem. In at suscipit urna, eget maximus ex. Integer rutrum bibendum est ac lacinia.</p>
-
-					<p>Aenean sagittis enim id sagittis hendrerit. Aliquam posuere ac nisi ac sollicitudin. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Donec nibh diam, sodales in sodales in, laoreet ac est. Integer hendrerit dignissim dui, non gravida ex aliquet quis. Mauris vel enim eget neque semper eleifend non eu lorem. In at suscipit urna, eget maximus ex. Integer rutrum bibendum est ac lacinia.</p>
+					<?php echo $full_bio; ?>
 
 					<hr>
 
@@ -264,21 +291,21 @@ get_header(); ?>
 						<div class="col-xs-4">
 							<div class="num">
 								<div class="num-content">
-									26,070+ <span>cats</span>
+									<?php echo $num_students; ?> <span>cats</span>
 								</div><!-- num-content -->
 							</div><!-- num -->
 						</div><!-- end col -->
 						<div class="col-xs-4">
 							<div class="num">
 								<div class="num-content">
-									568 <span>kittens</span>
+									<?php echo $num_reviews; ?> <span>kittens</span>
 								</div><!-- num-content -->
 							</div><!-- num -->
 						</div><!-- end col -->
 						<div class="col-xs-4">
 							<div class="num">
 								<div class="num-content">
-									8 <span>meowers</span>
+									<?php echo $num_courses; ?> <span>meowers</span>
 								</div><!-- num-content -->
 							</div><!-- num -->
 						</div><!-- end col -->
