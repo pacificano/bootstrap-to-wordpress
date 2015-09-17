@@ -1,5 +1,4 @@
 <?php 
-// Custom Fields
     $prelaunch_price = get_post_meta( 11, 'prelaunch_price', true );
     $launch_price = get_post_meta( 11, 'launch_price', true );
     $final_price = get_post_meta( 11, 'final_price', true );

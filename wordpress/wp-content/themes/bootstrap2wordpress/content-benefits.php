@@ -1,5 +1,4 @@
 <?php  
-// Advanced Custom Fields
 	$who_feature_image = get_field('who_feature_image');
 	$who_section_title = get_field('who_section_title');
 	$who_section_body = get_field('who_section_body');

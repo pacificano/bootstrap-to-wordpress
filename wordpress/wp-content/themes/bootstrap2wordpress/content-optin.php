@@ -1,5 +1,4 @@
 <?php 
-// Custom Fields
 	$optin_text = get_post_meta( 11, 'optin_text', true );
 	$optin_button_text = get_post_meta( 11, 'optin_button_text', true );
 ?>

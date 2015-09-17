@@ -1,5 +1,4 @@
 <?php  
-// Advanced Custom Fields
 	$income_feature_image = get_field('income_feature_image');
 	$income_section_title = get_field('income_section_title');
 	$income_section_description = get_field('income_section_description');

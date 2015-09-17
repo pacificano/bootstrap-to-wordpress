@@ -1,5 +1,4 @@
 <?php  
-// Advanced Custom Fields
 	$features_section_image = get_field('features_section_image');
 	$features_section_title = get_field('features_section_title');
 	$features_section_body = get_field('features_section_body');
@@ -35,7 +34,7 @@
 					<h4><?php the_title(); ?></h4>
 				</div>
 
-			<?php endwhile; ?>
+			<?php endwhile; wp_reset_query(); ?>
 
 		</div>
 
