@@ -328,44 +328,28 @@ get_header(); ?>
 						
 						<h2>What People Are Saying About Cats</h2>
 
-						<!-- testimonial -->
-						<div class="row testimonial">
-							<div class="col-sm-4">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/portrait-1.jpg" alt="Jonny">
-							</div>
-							<div class="col-sm-8">
-								<blockquote>
-									Typewriter Schlitz cliche scenester Marfa. Wayfarers Echo Park sustainable, selvage aesthetic meditation 3 wolf moon Schlitz disrupt chambray stumptown bespoke. 3 wolf moon 8-bit Bushwick pop-up, seitan migas quinoa twee single-origin coffee locavore lo-fi. Umami Thundercats cronut, cardigan flexitarian McSweeney's vegan whatever crucifix gluten-free twee hella lumbersexual pickled. VHS kitsch fashion axe, cold-pressed meditation four loko whatever. High Life chambray master cleanse, hella ennui McSweeney's food truck post-ironic kogi farm-to-table cold-pressed synth. DIY Tumblr swag, bicycle rights before they sold out pour-over retro food truck Williamsburg direct trade raw denim beard pickled Echo Park.
-									<cite>&ndash;Jonny, a rich cat</cite>
-								</blockquote>
-							</div>
-						</div>
+						<?php $loop = new WP_Query( array( 'post_type' => 'testimonial', 'orderby' => 'post_id', 'order' => 'ASC' ) ); ?>
 
-						<!-- testimonial -->
-						<div class="row testimonial">
-							<div class="col-sm-4">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/portrait-2.jpg" alt="Samuel">
-							</div>
-							<div class="col-sm-8">
-								<blockquote>
-									Sartorial Banksy single-origin coffee meggings art party try-hard, mixtape salvia deep v gentrify. Vice hella ennui, normcore seitan health goth +1 shabby chic next level dreamcatcher tofu brunch. Tumblr YOLO sartorial, Brooklyn McSweeney's Godard organic. +1 heirloom vinyl you probably haven't heard of them deep v. Letterpress photo booth Odd Future fap gluten-free migas ethical. VHS paleo deep v pickled Vice. Sartorial Helvetica farm-to-table beard, pork belly slow-carb artisan keytar pour-over locavore freegan.
-									<cite>&ndash;Samuel, a very rich cat</cite>
-								</blockquote>
-							</div>
-						</div>
+						<?php while( $loop->have_posts() ) : $loop->the_post(); ?>
 
-						<!-- testimonial -->
-						<div class="row testimonial">
-							<div class="col-sm-4">
-								<img src="<?php bloginfo('stylesheet_directory'); ?>/assets/img/portrait-3.jpg" alt="Gruffigans">
+							<!-- testimonial -->
+							<div class="row testimonial">
+								<div class="col-sm-4">
+									<?php 
+									if ( has_post_thumbnail()) {
+									 	the_post_thumbnail( array(200, 200));
+									 } 
+									?>
+								</div>
+								<div class="col-sm-8">
+									<blockquote>
+										<?php echo the_content(); ?>
+										<cite>&ndash;<?php the_title(); ?></cite>
+									</blockquote>
+								</div>
 							</div>
-							<div class="col-sm-8">
-								<blockquote>
-									Godard polaroid leggings, plaid organic trust fund Tumblr normcore High Life Shoreditch taxidermy. Kitsch flannel polaroid High Life butcher, 90's listicle keffiyeh. Pug Wes Anderson tousled Odd Future. Pop-up Tumblr taxidermy food truck fap. Lomo tilde kogi synth, Intelligentsia Carles 3 wolf moon hella you probably haven't heard of them cliche health goth ugh pork belly Neutra. Literally kale chips pug messenger bag meditation. Kickstarter Echo Park Vice, ethical Etsy single-origin coffee kitsch.
-									<cite>&ndash;Gruffigans, a very, very rich cat</cite>
-								</blockquote>
-							</div>
-						</div>
+
+						<?php endwhile; ?>
 
 					</div>
 				</div>
