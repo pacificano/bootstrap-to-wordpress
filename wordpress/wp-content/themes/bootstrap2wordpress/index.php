@@ -14,10 +14,17 @@
 
 get_header(); ?>
 
-	<div id="primary" class="content-area">
-		<main id="main" class="site-main" role="main">
+	<section class="feature-image feature-image-default-alt" data-type="background" data-speed="0.3">
+    	<h1 class="page-title">Blog</h1>
+    </section>
 
-		<?php if ( have_posts() ) : ?>
+    <!-- blog content -->
+    <div class="container">
+    	<div class="row" id="primary">
+    		
+    		<main id="content" class="col-sm-8" role="main">
+
+    		<?php if ( have_posts() ) : ?>
 
 			<?php if ( is_home() && ! is_front_page() ) : ?>
 				<header>
@@ -42,14 +49,19 @@ get_header(); ?>
 
 			<?php the_posts_navigation(); ?>
 
-		<?php else : ?>
+			<?php else : ?>
 
-			<?php get_template_part( 'template-parts/content', 'none' ); ?>
+				<?php get_template_part( 'template-parts/content', 'none' ); ?>
 
-		<?php endif; ?>
+			<?php endif; ?>
+    		</main><!-- content -->
 
-		</main><!-- #main -->
-	</div><!-- #primary -->
+    		<!-- sidebar -->
+    		<aside class="col-sm-4">
+    			<?php get_sidebar(); ?>
+    		</aside><!-- aside -->
 
-<?php get_sidebar(); ?>
+    	</div><!-- row -->
+    </div><!-- container -->
+
 <?php get_footer(); ?>
