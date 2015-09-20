@@ -59,6 +59,7 @@ get_header(); ?>
     		<!-- sidebar -->
     		<aside class="col-sm-4">
     			<?php get_sidebar(); ?>
+    			<?php dynamic_sidebar('sidebar-2'); ?>
     		</aside><!-- aside -->
 
     	</div><!-- row -->
